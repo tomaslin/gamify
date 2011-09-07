@@ -2,14 +2,14 @@ package grails.plugin.gamify
 
 class Level {
 
-    BigInteger points
+    BigInteger experience
     String label
 
-    static fromPoints( points ){
-        Level.findByPointsLessThanEquals( points, [ sort: 'points', order: 'desc' ])
+    static fromExperience( experience ){
+        Level.findByExperienceLessThanEquals( experience, [ sort: 'experience', order: 'desc' ])
     }
 
     static constraints = {
-        points( unique: true )
+        experience( unique: true )
     }
 }

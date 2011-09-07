@@ -9,10 +9,10 @@ class GameService {
         def activityType = activity.type
 
         player.addToActivities( activity )
-        player.points += activityType.points
-        player.cash += activityType.cash
+        player.experience += activityType.experience
+        player.credits += activityType.credits
 
-        def newLevel = Level.fromPoints( player.points )
+        def newLevel = Level.fromExperience( player.experience )
         def levelChanged = newLevel == player.level
 
         player.level = newLevel

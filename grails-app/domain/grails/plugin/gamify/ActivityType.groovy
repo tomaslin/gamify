@@ -3,8 +3,8 @@ package grails.plugin.gamify
 class ActivityType {
 
     String label
-    BigInteger points = 0
-    BigInteger cash = 0
+    BigInteger experience = 0
+    BigInteger credits = 0
 
     static constraints = {
     }

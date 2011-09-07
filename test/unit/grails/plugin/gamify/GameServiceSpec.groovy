@@ -18,37 +18,39 @@ class GameServiceSpec extends UnitSpec {
 
     }
 
-    def "adding activities increases points and cash"(){
+    def "adding activities increases experience and credits"(){
 
         setup:
-            def activityType = new ActivityType( points: points, cash: cash )
+            def activityType = new ActivityType( experience: experience, credits: credits )
             def activity = new Activity( type : activityType )
 
         when: 'start with a new player'
             player = new Player()
 
         then: 'initial values are 0'
-            player.points == 0
-            player.cash == 0
+            player.experience == 0
+            player.credits == 0
 
         when: 'add the activity'
             service.addActivity( player, activity )
 
-        then: 'point and cash levels are changed for the player'
-            player.points == pointsFinal
-            player.cash == cashFinal
+        then: 'point and credits levels are changed for the player'
+            player.experience == experienceFinal
+            player.credits == creditsFinal
 
         where:
-            points | cash | pointsFinal | cashFinal
-            0      | 100  | 0           | 100
-            0      | -100 | 0           | -100
-            100    | 100  | 100         | 100
-            100    | 0    | 100         | 0
+            experience  | credits | experienceFinal    | creditsFinal
+            0           | 100     | 0                  | 100
+            0           | -100    | 0                  | -100
+            100         | 100     | 100                | 100
+            100         | 0       | 100                | 0
 
     }
 
 
     def "adding activities increases levels"(){
+
+
 
     }
 
