@@ -47,10 +47,7 @@ class GameServiceSpec extends UnitSpec {
 
     }
 
-
     def "adding activities increases levels"(){
-
-
 
     }
 
@@ -65,6 +62,5 @@ class GameServiceSpec extends UnitSpec {
     def "when a badge is awarded, the service returns true"(){
 
     }
-
 
 }

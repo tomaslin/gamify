@@ -10,12 +10,10 @@ class LevelSpec extends UnitSpec {
 
     def "levels convert to the highest point threshold"() {
 
-        when:
-            new Level( label: 'newbie', experience: 0 ).save( validate: false )
-            new Level( label: 'legend', experience: 50 ).save( validate: false )
-            new Level( label: 'god', experience: 75 ).save( validate: false )
+        setup:
+            setupLevels()
 
-        then:
+        expect:
             Level.fromExperience( 0 ).label == 'newbie'
             Level.fromExperience( 30 ).label == 'newbie'
             Level.fromExperience( 50 ).label == 'legend'
@@ -41,6 +39,25 @@ class LevelSpec extends UnitSpec {
         then:
             Level.fromExperience( -20 ) == null
 
+    }
+
+    def "get next level"(){
+
+        setup:
+            setupLevels()
+
+        expect:
+            Level.nextLevel( -20 ).label == 'newbie'
+            Level.nextLevel( 20 ).label == 'legend'
+            Level.nextLevel( 51 ).label == 'god'
+            Level.nextLevel( 99 ) == null
+
+    }
+
+    private setupLevels(){
+        new Level( label: 'newbie', experience: 0 ).save( validate: false )
+        new Level( label: 'legend', experience: 50 ).save( validate: false )
+        new Level( label: 'god', experience: 99 ).save( validate: false )
     }
 
 }

@@ -1,0 +1,7 @@
+h4. The first step is to install the plugin:
+
+{code}
+grails install-plugin gamify
+{code}
+
+
